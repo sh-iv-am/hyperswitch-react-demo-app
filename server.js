@@ -36,7 +36,7 @@ app.post("/create-payment-intent", async (req, res) => {
   try {
     const paymentIntent = await hyper.paymentIntents.create({
       currency: "USD",
-      amount: 2999,
+      amount: 6999,
       confirm: false,
       capture_method: 'automatic',
       authentication_type: 'no_three_ds',
