@@ -39,9 +39,15 @@ export default function CheckoutForm() {
     setIsProcessing(false);
   };
 
+  let paymentOptions = {
+    wallets: {
+      walletReturnUrl: `${window.location.origin}/completion`,
+    },
+  };
+
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
-      <PaymentElement id="payment-element" />
+      <PaymentElement id="payment-element" options={paymentOptions} />
       <button disabled={isProcessing || !hyper || !elements} id="submit">
         <span id="button-text">
           {isProcessing ? "Processing ... " : "Pay now"}
