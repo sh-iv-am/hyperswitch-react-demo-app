@@ -37,6 +37,53 @@ app.post("/create-payment-intent", async (req, res) => {
     const paymentIntent = await hyper.paymentIntents.create({
       currency: "USD",
       amount: 2999,
+      confirm: false,
+      capture_method: 'automatic',
+      authentication_type: 'no_three_ds',
+      customer_id: 'StripeCustomer',
+      description: 'Joseph First Crypto',
+      shipping: {
+        address: {
+          line1: '1467',
+          line2: 'Harrison Street',
+          line3: 'Harrison Street',
+          city: 'San Fransico',
+          state: 'California',
+          zip: '94122',
+          country: 'US',
+          first_name: 'joseph',
+          last_name: 'Doe',
+        },
+        phone: {
+          number: '8056594427',
+          country_code: '+91',
+        },
+      },
+      billing: {
+        address: {
+          line1: '1467',
+          line2: 'Harrison Street',
+          line3: 'Harrison Street',
+          city: 'San Fransico',
+          state: 'California',
+          zip: '94122',
+          country: 'US',
+          first_name: 'joseph',
+          last_name: 'Doe',
+        },
+        phone: {
+          number: '8056594427',
+          country_code: '+91',
+        },
+      },
+      metadata: {
+        order_details: {
+          product_name: 'Apple iphone 15',
+          quantity: 1,
+        },
+      },
+      business_country: "US",
+      business_label: "default"
     });
 
     // Send publishable key and PaymentIntent details to client
